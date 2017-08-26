@@ -1,15 +1,24 @@
 import sys
-sys.path.append("D:\Workspaces PY\Image Aplication\PYLIB")
 from appJar import gui
+from toolbar import *
+
+
+def toolbar(btn):
+    print(btn)
+    if btn == "EXIT":
+        app.stop()
+    elif btn == "FULL-SCREEN":
+        if app.exitFullscreen():
+            app.setToolbarIcon("FULL-SCREEN", "FULL-SCREEN")
+        else:
+            app.setGeometry("fullscreen")
+            app.setToolbarIcon("FULL-SCREEN", "FULL-SCREEN-EXIT")
 
 # create the GUI & set a title
 app = gui("Login Form")
-# add labels & entries
-# in the correct row & column
-app.addLabel("userLab", "Username:", 0, 0)
-app.addEntry("userEnt", 0, 1)
-app.addLabel("passLab", "Password:", 1, 0)
-app.addEntry("passEnt", 1, 1)
-
+# add file menu options
+app.addMenuPreferences(toolbar)
+app.addMenuItem("Main", "EXIT", toolbar, shortcut="Option-Control-Shift-Alt-Command-B", underline=2)
+app.addMenuItem("Screen", "FULL-SCREEN", toolbar)
 # start the GUI
 app.go()
