@@ -18,7 +18,9 @@ def toolbar(btn):
 app = gui("Login Form")
 # add file menu options
 app.addMenuPreferences(toolbar)
-app.addMenuItem("Main", "EXIT", toolbar, shortcut="Option-Control-Shift-Alt-Command-B", underline=2)
+app.addMenuItem(
+    "Main", "EXIT", toolbar, shortcut="Control-B",
+    underline=2)
 app.addMenuItem("Screen", "FULL-SCREEN", toolbar)
 # start the GUI
 app.go()
